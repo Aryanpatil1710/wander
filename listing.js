@@ -1,26 +1,26 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const listingSChema = new Schema ({
+const listingSchema = new Schema({
     title: {
-        type : String,
+        type:String,
         require: true,
     },
-    descriptiom: String,
-    image: {
-        type : String,
-        default: 
-         "https://images.unsplash.com/photo-1573261289561-d584b9e07feb?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        set: (v) =>
-         v === "" 
-        ? "https://images.unsplash.com/photo-1573261289561-d584b9e07feb?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-        : v,
+    description: {
+        type: String,
+        default: "https://images.unsplash.com/photo-1553603043-55e1e23fb5be?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        set: function(v) {
+            return v === "" ?
+                "https://images.unsplash.com/photo-1553603043-55e1e23fb5be?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" :
+                v;
+        }
     },
-    price: Number,
     
+    image: String,
+    price: Number,
     location: String,
     country: String,
 });
-    
-const listing = mongoose.model("listing" , listingSchema);
+
+const Listing = mongoose.model("Listing", listingSchema);
 module.exports = Listing;
